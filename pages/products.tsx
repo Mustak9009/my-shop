@@ -11,9 +11,7 @@ export default function products({ products }: { products: any }) {
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="mb-7">
-          <h1
-            className={`tracking-wider font-bold mb-2 text-black text-3xl ${roboto.className}`}
-          >
+          <h1 className={`tracking-wider font-bold mb-2 text-black text-3xl ${roboto.className}`}>
             Product List - My shop
           </h1>
           <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
@@ -30,7 +28,10 @@ export default function products({ products }: { products: any }) {
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                     {item.attributes.Title}
                   </h1>
-                  <button className={`border-2 border-gray-300 ml-1  rounded-full w-6 h-6 focus:outline-none bg-${(item.attributes.color != 'black' && item.attributes.color != 'white') ? item.attributes.color + '-500' : item.attributes.color}`}></button>
+                  <div className="hidden bg-white bg-black bg-orange-500 bg-red-500 bg-green-500"></div> {/*For aply dynamic bg color...*/}
+                  {item.attributes.colors && item.attributes.colors.map((color:any)=>(
+                     <button className={`border-2 border-gray-300 ml-1  rounded-full w-6 h-6 focus:outline-none bg-${(color != 'black' && color != 'white') ? color + '-500' : color}`} key={color}></button>
+                  ))}
                   <p className="leading-relaxed mb-3">
                     {item.attributes.Description} 
                   </p>

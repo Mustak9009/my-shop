@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-export default function NavBar() {
+export default function NavBar({cart,relodKey}:{cart:any,relodKey:number}) {
   return (
     <header className="text-gray-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row sm:items-center">
@@ -14,6 +14,7 @@ export default function NavBar() {
             <Link href='/about' className="mr-5 hover:text-gray-900 cursor-pointer outline-none">About</Link>
             <Link href='/products' className="mr-5 hover:text-gray-900 cursor-pointer outline-none">Products</Link>
             <Link href='/contactus' className="mr-5 hover:text-gray-900 cursor-pointer outline-none">Contact US</Link>
+            <Link href='/checkout' className="mr-5 hover:text-gray-900 cursor-pointer outline-none">Cart({cart.length})</Link>
           </nav>
           <button className="inline-flex items-center border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 bg-blue-600 text-white hover:text-gray-200 justify-center">
             Login
