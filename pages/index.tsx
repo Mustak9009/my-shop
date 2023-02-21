@@ -7,11 +7,9 @@ export default function Home() {
     <>
       <Head>
         <title>My shop</title>
-        <meta
-          name="description"
-          content="That is a e-commerce shop for watch,mobile,etc."
-        />
+        <meta name="description" content="That is a e-commerce shop for watch,mobile,etc."/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="text-gray-600 body-font">

@@ -2,14 +2,14 @@ import React from 'react'
 import type {GetServerSideProps} from 'next';
 import { useRouter } from 'next/router';
 export default function Product({product,addToCart}:{product:any,addToCart:(item:any,qty:any,price:any)=> void}) {
-  const {Title,Price,colors,Description} = product.attributes;
+  const {Title,Price,colors,Description,Images} = product.attributes;
   const route = useRouter();
   const {slug} = route.query;
   return (
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400"/>
+            <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-contain zrounded" src={`http://localhost:1337${Images.data.attributes.url}`}/>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 className="text-sm title-font text-gray-500 tracking-widest">My shop</h2>
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{Title}</h1>
@@ -78,7 +78,7 @@ export default function Product({product,addToCart}:{product:any,addToCart:(item
 }
 // http://localhost:1337/api/products?filters[Slug]=FitBandStrap_compatiable_samsungGalaxy
 export const getServerSideProps:GetServerSideProps = async (context) => {
-  const res = await fetch(`http://127.0.0.1:1337/api/products?filters[Slug]=${context.params?.slug}`, {
+  const res = await fetch(`http://127.0.0.1:1337/api/products?filters[Slug]=${context.params?.slug}&populate=*`, {
     method: "GET",
     mode: "same-origin",
     cache: "default",
